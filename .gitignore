@@ -1,6 +1,9 @@
-echo node_modules/ > .gitignore
-echo dist/ >> .gitignore
-echo frontend/node_modules/ >> .gitignore
-echo frontend/dist/ >> .gitignore
-echo backend/__pycache__/ >> .gitignore
-echo .env >> .gitignore
+node_modules/
+dist/
+.env
+
+frontend/node_modules/
+frontend/dist/
+
+backend/__pycache__/
+backend/.venv/
