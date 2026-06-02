@@ -7,9 +7,24 @@ const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api';
 
 const fallback = {
   merch: [
-    { id: 1, name: 'COTP Razor Tee', price: '$38', status: 'Coming Soon' },
-    { id: 2, name: 'Chrome Logo Hoodie', price: '$72', status: 'Coming Soon' },
-    { id: 3, name: 'Sharp Edge Poster', price: '$22', status: 'Limited' }
+    {
+      id: 1,
+      name: 'LIQUID CYBER',
+      price: '￥999',
+      images: ['/product1.1.webp', '/product1.2.webp']
+    },
+    {
+      id: 2,
+      name: 'KATANA',
+      price: '￥999',
+      images: ['/product2.1.webp', '/product2.2.webp']
+    },
+    {
+      id: 3,
+      name: 'goat',
+      price: '￥999',
+      video: '/goat.webm'
+    }
   ],
   music: [
     { id: 1, title: 'Signal / Noise', type: 'Single', year: '2026', link: '#' },
@@ -103,7 +118,9 @@ function App() {
         {tabs.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
+            type="button"
             className={active === id ? 'active' : ''}
+            aria-pressed={active === id}
             onClick={() => setActive(id)}
           >
             <Icon size={15} />
@@ -133,11 +150,27 @@ function Merch({ items, loading }) {
       <div className="cards">
         {items.map((item) => (
           <article className="card merch-card" key={item.id}>
-            <div className="product-shape">{item.name.slice(0, 4).toUpperCase()}</div>
+            <div
+              className={`product-media ${item.video ? 'is-static' : ''}`}
+            >
+              {item.video ? (
+                <video src={item.video} autoPlay muted loop playsInline />
+              ) : !item.images?.length ? (
+                <span>{item.name.slice(0, 4).toUpperCase()}</span>
+              ) : (
+                item.images.map((src, index) => (
+                  <img
+                    key={src}
+                    className={index === 1 ? 'alternate' : ''}
+                    src={src}
+                    alt={`${item.name} view ${index + 1}`}
+                  />
+                ))
+              )}
+            </div>
 
             <div>
               <h3>{item.name}</h3>
-              <p>{item.status}</p>
             </div>
 
             <strong>{item.price}</strong>
@@ -234,7 +267,9 @@ function Contact() {
           required
         />
 
-        <button type="submit">SEND MESSAGE</button>
+        <button type="submit">
+          <span>SEND MESSAGE</span>
+        </button>
 
         {status && <p className="tiny">{status}</p>}
       </form>

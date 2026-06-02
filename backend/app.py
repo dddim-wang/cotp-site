@@ -6,9 +6,24 @@ app = Flask(__name__)
 CORS(app)
 
 MERCH = [
-    {"id": 1, "name": "COTP Razor Tee", "price": "$38", "status": "Coming Soon"},
-    {"id": 2, "name": "Chrome Logo Hoodie", "price": "$72", "status": "Coming Soon"},
-    {"id": 3, "name": "Sharp Edge Poster", "price": "$22", "status": "Limited"},
+    {
+        "id": 1,
+        "name": "LIQUID CYBER",
+        "price": "￥999",
+        "images": ["/product1.1.webp", "/product1.2.webp"],
+    },
+    {
+        "id": 2,
+        "name": "KATANA",
+        "price": "￥999",
+        "images": ["/product2.1.webp", "/product2.2.webp"],
+    },
+    {
+        "id": 3,
+        "name": "goat",
+        "price": "￥999",
+        "video": "/goat.webm",
+    },
 ]
 
 MUSIC = [

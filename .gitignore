@@ -4,6 +4,7 @@ dist/
 
 frontend/node_modules/
 frontend/dist/
+frontend/vite-dev*.log
 
 backend/__pycache__/
 backend/.venv/
